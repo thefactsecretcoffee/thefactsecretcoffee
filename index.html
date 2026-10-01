@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Thefactsecret Coffee — Một Sự Thật, Một Bóng Tối</title>
+    <style>
+        /* --- RESET & CÀ ĐẶT CHUNG --- */
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+        body {
+            background-color: #080808;
+            color: #d1d1d1;
+            font-family: 'Courier New', Courier, monospace; /* Vibe đánh máy, cổ điển, bí ẩn */
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* --- THANH MENU ĐIỀU HƯỚNG --- */
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 8%;
+            background: rgba(8, 8, 8, 0.95);
+            border-bottom: 1px solid #1a1a1a;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+        .logo {
+            font-size: 16px;
+            font-weight: bold;
+            letter-spacing: 3px;
+            color: #fff;
+            text-transform: uppercase;
+        }
+        .nav-links {
+            display: flex;
+            gap: 30px;
+        }
+        .nav-links a {
+            color: #888;
+            text-decoration: none;
+            font-size: 13px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: 0.3s;
+        }
+        .nav-links a:hover {
+            color: #ff3333;
+            text-shadow: 0 0 8px rgba(255, 51, 51, 0.6);
+        }
+
+        /* --- HERO SECTION (PHẦN MỞ ĐẦU) --- */
+        .hero {
+            height: 90vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 0 20px;
+            background: linear-gradient(rgba(8,8,8,0.75), rgba(8,8,8,0.95)), 
+                        url('https://images.unsplash.com/photo-1509042239860-f550ce710b93?auto=format&fit=crop&w=1350&q=80') no-repeat center center/cover;
+            border-bottom: 1px solid #1a1a1a;
+        }
+        .hero h1 {
+            font-size: 2.8rem;
+            color: #fff;
+            margin-bottom: 15px;
+            letter-spacing: 4px;
+            text-transform: uppercase;
+        }
+        .hero p {
+            color: #aaa;
+            font-size: 1.1rem;
+            max-width: 650px;
+            margin-bottom: 35px;
+            font-style: italic;
+        }
+        .btn-primary {
+            background: transparent;
+            color: #fff;
+            border: 1px solid #ff3333;
+            padding: 14px 35px;
+            font-size: 13px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            cursor: pointer;
+            transition: 0.4s;
+            text-decoration: none;
+        }
+        .btn-primary:hover {
+            background: #ff3333;
+            box-shadow: 0 0 20px rgba(255, 51, 51, 0.5);
+        }
+
+        /* --- PHẦN NỘI DUNG CHUNG --- */
+        .section {
+            padding: 90px 10%;
+            border-bottom: 1px solid #1a1a1a;
+        }
+        .section-title {
+            text-align: center;
+            font-size: 1.8rem;
+            color: #fff;
+            margin-bottom: 50px;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+        }
+
+        /* --- CONCEPT / THE LAST PAGE --- */
+        .concept-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+            align-items: center;
+        }
+        .concept-text h3 {
+            color: #fff;
+            margin-bottom: 15px;
+            font-size: 1.3rem;
+            letter-spacing: 1px;
+        }
+        .concept-text p {
+            color: #999;
+            margin-bottom: 20px;
+            font-size: 0.95rem;
+        }
+        .concept-box {
+            background: #121212;
+            border: 1px solid #222;
+            padding: 30px;
+            position: relative;
+        }
+        .concept-box::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; width: 3px; height: 100%;
+            background: #ff3333;
+        }
+
+        /* --- MENU NỔI BẬT --- */
+        .menu-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+        }
+        .menu-item {
+            background: #101010;
+            border: 1px solid #1f1f1f;
+            padding: 25px;
+            transition: 0.3s;
+        }
+        .menu-item:hover {
+            border-color: #ff3333;
+            transform: translateY(-5px);
+        }
+        .menu-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+            margin-bottom: 10px;
+        }
+        .menu-name {
+            color: #fff;
+            font-size: 1.1rem;
+            letter-spacing: 1px;
+        }
+        .menu-price {
+            color: #ff3333;
+            font-weight: bold;
+        }
+        .menu-desc {
+            color: #888;
+            font-size: 0.85rem;
+        }
+
+        /* --- FOOTER --- */
+        footer {
+            text-align: center;
+            padding: 40px;
+            background: #050505;
+            color: #555;
+            font-size: 0.85rem;
+            letter-spacing: 1px;
+        }
+
+        /* Responsive cho điện thoại */
+        @media (max-width: 768px) {
+            .concept-grid { grid-template-columns: 1fr; }
+            .nav-links { display: none; }
+            .hero h1 { font-size: 2rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Thanh Menu -->
+    <nav class="navbar">
+        <div class="logo">Thefactsecret Coffee</div>
+        <div class="nav-links">
+            <a href="#">Trang Chủ</a>
+            <a href="#concept">Về Quán</a>
+            <a href="#menu">Menu Ma Quái</a>
+            <a href="#lastpage">The Last Page</a>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <header class="hero">
+        <h1>Thefactsecret Coffee</h1>
+        <p>“Có những sự thật người ta không dám nói. Có những góc khuất trong tâm trí mà ai cũng từng ghé qua...”</p>
+        <a href="#menu" class="btn-primary">Khám Phá Menu</a>
+    </header>
+
+    <!-- Về quán & Concept -->
+    <section id="concept" class="section">
+        <h2 class="section-title">Một Sự Thật, Một Bóng Tối</h2>
+        <div class="concept-grid">
+            <div class="concept-text">
+                <h3>Không gian tách biệt khỏi thế giới</h3>
+                <p>Nơi mà cà phê không chỉ là thức uống, mà là chìa khóa để mở cánh cửa bên trong mỗi người. Mỗi ly cà phê mang một “fact” – một sự thật nhỏ, đôi khi sâu sắc đến mức khiến bạn phải im lặng.</p>
+                <p>Ở đây, bạn không cần phải tỏ ra ổn, không cần nói gì cả – chỉ cần ngồi xuống và lật trang sách cuối cùng của chính mình.</p>
+            </div>
+            <div class="concept-box">
+                <h3 style="color: #fff; margin-bottom: 10px;">The Last Page</h3>
+                <p style="color: #aaa; font-style: italic;">Căn phòng ánh sáng yếu ớt hòa vào hơi lạnh, sách cũ và hương cà phê đặc quánh. Mọi câu chuyện đều kết thúc bằng một sự thật, và không phải ai cũng đủ dũng cảm bước tới đây.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Menu Section -->
+    <section id="menu" class="section">
+        <h2 class="section-title">Menu Signature</h2>
+        <div class="menu-grid">
+            <div class="menu-item">
+                <div class="menu-header">
+                    <span class="menu-name">Black Soul Espresso</span>
+                    <span class="menu-price">35.000đ</span>
+                </div>
+                <div class="menu-desc">Espresso đậm đặc kết hợp than tre hoạt tính và hậu vị caramel sâu thẳm.</div>
+            </div>
+            <div class="menu-item">
+                <div class="menu-header">
+                    <span class="menu-name">Blood Latte</span>
+                    <span class="menu-price">45.000đ</span>
+                </div>
+                <div class="menu-desc">Sữa tươi đánh bọt mịn, espresso và vệt sốt dâu đỏ rỏ máu ma mị.</div>
+            </div>
+            <div class="menu-item">
+                <div class="menu-header">
+                    <span class="menu-name">Witch’s Brew Matcha</span>
+                    <span class="menu-price">49.000đ</span>
+                </div>
+                <div class="menu-desc">Matcha đậm vị phủ lớp kem tươi hòa quyện cùng bột cacao đen bí ẩn.</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>© 2026 THEFACTSECRET COFFEE. All rights reserved.</p>
+    </footer>
+
+</body>
+</html>
